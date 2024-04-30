@@ -11,7 +11,7 @@ export function getSystemPrefersDark() {
  * @returns 'dark', 'light', or null
  */
 export function getLocalTheme() {
-  return localStorage.getItem('theme') as 'dark' | 'light' | null
+  return localStorage.theme as 'dark' | 'light' | null
 }
 
 /**
