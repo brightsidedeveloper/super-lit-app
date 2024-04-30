@@ -1,23 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router"
-import { useRef } from "react"
-import useTheme from "../hooks/useTheme"
-import { setTheme } from "../utils/darkMode"
+import { createFileRoute } from '@tanstack/react-router'
+import { setTheme } from '../utils/darkMode'
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: Home,
 })
 
 function Home() {
-  const onClick = () =>
-    setTheme(
-      document.documentElement.classList.contains("dark") ? "light" : "dark"
-    )
+  const onClick = (theme: 'light' | 'dark' | null) => setTheme(theme)
 
   return (
-    <div>
+    <div className='flex flex-col gap-4'>
       <h1>Home</h1>
-      <button className="" onClick={onClick}>
-        Change Theme
+      <button className='dark:translate-x-0 translate-x-4 transition-transform' onClick={() => onClick('light')}>
+        Light
+      </button>
+      <button className='dark:translate-x-4 transition-transform' onClick={() => onClick('dark')}>
+        Dark
+      </button>
+      <button className='' onClick={() => onClick(null)}>
+        System
       </button>
     </div>
   )
