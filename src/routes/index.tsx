@@ -15,10 +15,22 @@ const wrapperVariants = {
 
 const innerVariants = {
   initial: {
-    x: -150,
+    x: -200,
   },
   animate: {
     x: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
+
+const boxWrapperVariants = {
+  start: {
+    y: 500,
+  },
+  animate: {
+    y: 0,
     transition: {
       duration: 0.5,
     },
@@ -58,7 +70,7 @@ function Home() {
           Home
         </motion.h1>
         <motion.div variants={innerVariants}>
-          <motion.button variants={buttonVariants} whileTap={'click'} className='p-2 bg-red-500 rounded-lg whitespace-nowrap' onClick={() => {}}>
+          <motion.button variants={buttonVariants} whileTap={'click'} className='p-2 bg-red-500 rounded-lg whitespace-nowrap select-none' onClick={() => {}}>
             Woah Button
           </motion.button>
         </motion.div>
@@ -74,7 +86,9 @@ function Home() {
         <br />
       </motion.div>
       <div className='flex w-full h-full items-center justify-center'>
-        <motion.div variants={boxVariants} animate='animate' className='w-32 h-32 bg-rose-500'></motion.div>
+        <motion.div variants={boxWrapperVariants} initial='start' animate='animate' className='h-fit w-fit'>
+          <motion.div variants={boxVariants} initial='start' animate='animate' className='w-32 h-32 bg-rose-500'></motion.div>
+        </motion.div>
       </div>
     </section>
   )
